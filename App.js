@@ -5,7 +5,8 @@ import {
   View,
   StatusBar,
   StyleSheet,
- } from 'react-native';
+  ScrollView
+        } from 'react-native';
 
 import ColorButton from './components/ColorButton';
 
@@ -28,11 +29,20 @@ export default class App extends Component {
  
     const {backgroundColor} = this.state;   //destructoring
     return (
-      <View style = { [ styles.container, { backgroundColor } ] }>
+      <ScrollView style = { [ styles.container, { backgroundColor } ] }>
          < ColorButton backgroundColor = 'red' onSelect ={this.changeColor}/>
          < ColorButton backgroundColor = 'pink' onSelect ={this.changeColor}/>
          < ColorButton backgroundColor = 'yellow' onSelect ={this.changeColor}/>
-      </View>
+         < ColorButton backgroundColor = 'orange' onSelect ={this.changeColor}/>
+         < ColorButton backgroundColor = 'green' onSelect ={this.changeColor}/>
+         < ColorButton backgroundColor = 'lightblue' onSelect ={this.changeColor}/>
+         < ColorButton backgroundColor = 'white' onSelect ={this.changeColor}/>
+         < ColorButton backgroundColor = 'lightpink' onSelect ={this.changeColor}/>
+         < ColorButton backgroundColor = 'yellow' onSelect ={this.changeColor}/>
+         < ColorButton backgroundColor = 'red' onSelect ={this.changeColor}/>
+         < ColorButton backgroundColor = 'pink' onSelect ={this.changeColor}/>
+         < ColorButton backgroundColor = 'yellow' onSelect ={this.changeColor}/>
+      </ScrollView>
     );
   }
 }
@@ -42,9 +52,10 @@ const styles = StyleSheet.create({
 
   container:{
     flex: 1,
-    alignItems: 'center',
-    backgroundColor:'#DDD',
-    justifyContent: 'center'
+    paddingTop: 20
+    // alignItems: 'center',
+    // backgroundColor:'#DDD',
+    // justifyContent: 'center'
   }
 })
 
