@@ -1,13 +1,13 @@
 import React, { Component} from 'react';
 import {
   AppRegistry, 
-  Text, 
+
   View,
   StatusBar,
   StyleSheet,
-  TouchableHighlight } from 'react-native';
+ } from 'react-native';
 
-
+import ColorButton from './components/ColorButton';
 
 export default class App extends Component {
   constructor(){
@@ -21,7 +21,7 @@ export default class App extends Component {
 
   //adding methods: 
   changeColor(backgroundColor){
-    this.setState ({backgroundColor:backgroundColor})
+    this.setState ({backgroundColor})
   }
 
   render() {
@@ -29,19 +29,9 @@ export default class App extends Component {
     const {backgroundColor} = this.state;   //destructoring
     return (
       <View style = { [ styles.container, { backgroundColor } ] }>
-        <TouchableHighlight 
-          style = {styles.button} 
-          onPress = {()=>this.changeColor('yellow')}
-          underlayColor = 'orange' >
-
-            <View style = {styles.row}>
-            <View style= {[styles.sample, {backgroundColor: 'yellow'}]}/>
-            <Text style = {styles.text}> yellow</Text>
-            </View>
-
-        </TouchableHighlight>
-        {/* <Text style = { styles.button } onPress = {()=> this.changeColor('green')}> green</Text>
-        <Text style = { styles.button } onPress ={() =>this.changeColor('red')}> red</Text> */}
+         < ColorButton backgroundColor = 'red' onSelect ={this.changeColor}/>
+         < ColorButton backgroundColor = 'pink' onSelect ={this.changeColor}/>
+         < ColorButton backgroundColor = 'yellow' onSelect ={this.changeColor}/>
       </View>
     );
   }
@@ -55,36 +45,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor:'#DDD',
     justifyContent: 'center'
-  }, 
-  button:{
-     borderWidth:2,
-     borderRadius: 10,
-     padding: 10,
-     margin: 10,
-     alignSelf:'stretch',
-     backgroundColor: 'rgba(255, 255,255,.8)'
-  },
-  row:{
-    flexDirection: 'row',
-    alignItems:'center',
-   
-
-  },
-  sample:{
-    height: 20,
-    width: 20,
-    borderRadius:10,
-    margin: 5,
-    backgroundColor: 'white',
-
-  },
-  text:{
-    fontSize: 22,
-    fontWeight:'bold'
   }
-  
-
-
 })
 
 AppRegistry.registerComponent('AwesomeProject', ()=> App)
