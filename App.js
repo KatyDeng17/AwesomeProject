@@ -4,7 +4,8 @@ import {
   Text, 
   View,
   StatusBar,
-  StyleSheet } from 'react-native';
+  StyleSheet,
+  TouchableHighlight } from 'react-native';
 
 
 
@@ -28,10 +29,17 @@ export default class App extends Component {
     const {backgroundColor} = this.state;   //destructoring
     return (
       <View style = { [ styles.container, { backgroundColor } ] }>
-        <View style = {styles.row}>
-         <View style= {[styles.sample, {backgroundColor: 'yellow'}]}/>
-         <Text style = {styles.text}> yellow</Text>
-        </View>
+        <TouchableHighlight 
+          style = {styles.button} 
+          onPress = {()=>this.changeColor('yellow')}
+          underlayColor = 'orange' >
+
+            <View style = {styles.row}>
+            <View style= {[styles.sample, {backgroundColor: 'yellow'}]}/>
+            <Text style = {styles.text}> yellow</Text>
+            </View>
+
+        </TouchableHighlight>
         {/* <Text style = { styles.button } onPress = {()=> this.changeColor('green')}> green</Text>
         <Text style = { styles.button } onPress ={() =>this.changeColor('red')}> red</Text> */}
       </View>
@@ -51,16 +59,15 @@ const styles = StyleSheet.create({
   button:{
      borderWidth:2,
      borderRadius: 10,
-     fontSize: 30,
      padding: 10,
      margin: 10,
      alignSelf:'stretch',
-     textAlign: 'center'
+     backgroundColor: 'rgba(255, 255,255,.8)'
   },
   row:{
     flexDirection: 'row',
     alignItems:'center',
-    borderWidth: 1
+   
 
   },
   sample:{
@@ -72,7 +79,7 @@ const styles = StyleSheet.create({
 
   },
   text:{
-    fontSize: 23,
+    fontSize: 22,
     fontWeight:'bold'
   }
   
